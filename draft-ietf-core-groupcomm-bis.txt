@@ -166,16 +166,17 @@ Table of Contents
      C.4.  Members of any Application Group in the Network
    Appendix D.  Examples of Message Exchanges
    Appendix E.  Document Updates
-     E.1.  Version -09 to -10
-     E.2.  Version -08 to -09
-     E.3.  Version -07 to -08
-     E.4.  Version -06 to -07
-     E.5.  Version -05 to -06
-     E.6.  Version -04 to -05
-     E.7.  Version -03 to -04
-     E.8.  Version -02 to -03
-     E.9.  Version -01 to -02
-     E.10. Version -00 to -01
+     E.1.  Version -10 to -11
+     E.2.  Version -09 to -10
+     E.3.  Version -08 to -09
+     E.4.  Version -07 to -08
+     E.5.  Version -06 to -07
+     E.6.  Version -05 to -06
+     E.7.  Version -04 to -05
+     E.8.  Version -03 to -04
+     E.9.  Version -02 to -03
+     E.10. Version -01 to -02
+     E.11. Version -00 to -01
    Acknowledgments
    Authors' Addresses
 
@@ -3867,7 +3868,13 @@ Appendix E.  Document Updates
 
    RFC EDITOR: PLEASE REMOVE THIS SECTION.
 
-E.1.  Version -09 to -10
+E.1.  Version -10 to -11
+
+   *  Updated references.
+
+   *  Editorial improvements.
+
+E.2.  Version -09 to -10
 
    *  Clarified use of NoSec for 'early discovery' and refer to cBRSKI.
 
@@ -3898,18 +3905,18 @@ E.1.  Version -09 to -10
 
    *  Editorial fixes and improvements.
 
-E.2.  Version -08 to -09
+E.3.  Version -08 to -09
 
    *  Multiple responses in long exchanges are non-traditional
       responses.
 
    *  Updated references.
 
-E.3.  Version -07 to -08
+E.4.  Version -07 to -08
 
    *  Updated references.
 
-E.4.  Version -06 to -07
+E.5.  Version -06 to -07
 
    *  Updated list of changes to other documents.
 
@@ -3944,7 +3951,7 @@ E.4.  Version -06 to -07
 
    *  Editorial improvements.
 
-E.5.  Version -05 to -06
+E.6.  Version -05 to -06
 
    *  Harmonized use of "group URI".
 
@@ -3968,7 +3975,7 @@ E.5.  Version -05 to -06
 
    *  Editorial improvements.
 
-E.6.  Version -04 to -05
+E.7.  Version -04 to -05
 
    *  Clarified changes to other documents.
 
@@ -3987,7 +3994,7 @@ E.6.  Version -04 to -05
 
    *  Editorial improvements.
 
-E.7.  Version -03 to -04
+E.8.  Version -03 to -04
 
    *  Multi-ETag Option for response revalidation moved to appendix.
 
@@ -4009,7 +4016,7 @@ E.7.  Version -03 to -04
 
    *  Editorial improvements.
 
-E.8.  Version -02 to -03
+E.9.  Version -02 to -03
 
    *  Multiple responses from same server handled at the application.
 
@@ -4023,7 +4030,7 @@ E.8.  Version -02 to -03
 
    *  Client-Proxy response revalidation, with the Group-ETag Option.
 
-E.9.  Version -01 to -02
+E.10.  Version -01 to -02
 
    *  Clarified relation between security groups and application groups.
 
@@ -4039,7 +4046,7 @@ E.9.  Version -01 to -02
 
    *  Response suppression based on classes of error codes.
 
-E.10.  Version -00 to -01
+E.11.  Version -00 to -01
 
    *  Clarifications on group memberships for the different group types.
 
