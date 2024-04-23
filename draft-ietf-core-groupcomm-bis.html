@@ -11,24 +11,24 @@
 <meta content="
        This document specifies the use of the Constrained Application Protocol (CoAP) for group communication, including the use of UDP/IP multicast as the default underlying data transport. Both unsecured and secured CoAP group communication are specified. Security is achieved by use of the Group Object Security for Constrained RESTful Environments (Group OSCORE) protocol. The target application area of this specification is any group communication use cases that involve resource-constrained devices or networks that support CoAP. This document replaces and obsoletes RFC 7390, while it updates RFC 7252 and RFC 7641. 
     " name="description">
-<meta content="xml2rfc 3.18.2" name="generator">
+<meta content="xml2rfc 3.21.0" name="generator">
 <meta content="Internet-Draft" name="keyword">
 <meta content="draft-ietf-core-groupcomm-bis-latest" name="ietf.draft">
 <!-- Generator version information:
-  xml2rfc 3.18.2
-    Python 3.11.6
+  xml2rfc 3.21.0
+    Python 3.11.9
     ConfigArgParse 1.7
     google-i18n-address 3.1.0
     intervaltree 3.1.0
     Jinja2 3.1.2
     lxml 4.9.3
-    platformdirs 4.1.0
+    platformdirs 4.2.0
     pycountry 22.3.5
     PyYAML 6.0.1
     requests 2.31.0
     setuptools 68.2.2
     six 1.16.0
-    wcwidth 0.2.12
+    wcwidth 0.2.13
 -->
 <link href="draft-ietf-core-groupcomm-bis.xml" rel="alternate" type="application/rfc+xml">
 <link href="#copyright" rel="license">
@@ -1027,11 +1027,11 @@ svg :is([fill="white"], [fill^="#fff"]) {
 <thead><tr>
 <td class="left">Internet-Draft</td>
 <td class="center">Group Communication for CoAP</td>
-<td class="right">December 2023</td>
+<td class="right">April 2024</td>
 </tr></thead>
 <tfoot><tr>
 <td class="left">Dijk, et al.</td>
-<td class="center">Expires 18 June 2024</td>
+<td class="center">Expires 25 October 2024</td>
 <td class="right">[Page]</td>
 </tr></tfoot>
 </table>
@@ -1050,12 +1050,12 @@ svg :is([fill="white"], [fill^="#fff"]) {
 <a href="https://www.rfc-editor.org/rfc/rfc7252" class="eref">7252</a>, <a href="https://www.rfc-editor.org/rfc/rfc7641" class="eref">7641</a> (if approved)</dd>
 <dt class="label-published">Published:</dt>
 <dd class="published">
-<time datetime="2023-12-16" class="published">16 December 2023</time>
+<time datetime="2024-04-23" class="published">23 April 2024</time>
     </dd>
 <dt class="label-intended-status">Intended Status:</dt>
 <dd class="intended-status">Standards Track</dd>
 <dt class="label-expires">Expires:</dt>
-<dd class="expires"><time datetime="2024-06-18">18 June 2024</time></dd>
+<dd class="expires"><time datetime="2024-10-25">25 October 2024</time></dd>
 <dt class="label-authors">Authors:</dt>
 <dd class="authors">
 <div class="author">
@@ -1108,7 +1108,7 @@ svg :is([fill="white"], [fill^="#fff"]) {
         time. It is inappropriate to use Internet-Drafts as reference
         material or to cite them other than as "work in progress."<a href="#section-boilerplate.1-3" class="pilcrow">¶</a></p>
 <p id="section-boilerplate.1-4">
-        This Internet-Draft will expire on 18 June 2024.<a href="#section-boilerplate.1-4" class="pilcrow">¶</a></p>
+        This Internet-Draft will expire on 25 October 2024.<a href="#section-boilerplate.1-4" class="pilcrow">¶</a></p>
 </section>
 </div>
 <div id="copyright">
@@ -1117,7 +1117,7 @@ svg :is([fill="white"], [fill^="#fff"]) {
 <a href="#name-copyright-notice" class="section-name selfRef">Copyright Notice</a>
         </h2>
 <p id="section-boilerplate.2-1">
-            Copyright (c) 2023 IETF Trust and the persons identified as the
+            Copyright (c) 2024 IETF Trust and the persons identified as the
             document authors. All rights reserved.<a href="#section-boilerplate.2-1" class="pilcrow">¶</a></p>
 <p id="section-boilerplate.2-2">
             This document is subject to BCP 78 and the IETF Trust's Legal
@@ -2135,7 +2135,7 @@ MIN_TOKEN_REUSE_TIME = (NON_LIFETIME + MAX_LATENCY +
 <p id="section-3.1.6-1">Since a client sending a group request with a Token T will accept multiple responses with the same Token T, it is possible in particular that the same server sends multiple responses with the same Token T back to the client. For example, this server might not implement the optional CoAP message deduplication based on Message ID; or it might be acting out of specification as a malicious, compromised or faulty server.<a href="#section-3.1.6-1" class="pilcrow">¶</a></p>
 <p id="section-3.1.6-2">When this happens, the client normally processes at the CoAP layer each of those responses to the same request coming from the same server. If the processing of a response is successful, the client delivers this response to the application as usual.<a href="#section-3.1.6-2" class="pilcrow">¶</a></p>
 <p id="section-3.1.6-3">Then, the application is in a better position to decide what to do, depending on the available context information. For instance, it might accept and process all the responses from the same server, even if they are not Observe notifications (i.e., they do not include an Observe option). Alternatively, the application might accept and process only one of those responses, such as the most recent one from that server, e.g., when this can trigger a change of state within the application.<a href="#section-3.1.6-3" class="pilcrow">¶</a></p>
-<p id="section-3.1.6-4">As part of a long exchange between the client and any of the servers in the CoAP group, the responses considered above are an example of the more general concept elaborated in <span><a href="https://datatracker.ietf.org/doc/html/draft-bormann-core-responses-01#section-2" class="relref">Section 2</a> of [<a href="#I-D.bormann-core-responses" class="cite xref">I-D.bormann-core-responses</a>]</span>.<a href="#section-3.1.6-4" class="pilcrow">¶</a></p>
+<p id="section-3.1.6-4">As part of a long exchange between the client and any of the servers in the CoAP group, the responses considered above are an example of the more general concept elaborated in <span><a href="https://datatracker.ietf.org/doc/html/draft-bormann-core-responses-02#section-2" class="relref">Section 2</a> of [<a href="#I-D.bormann-core-responses" class="cite xref">I-D.bormann-core-responses</a>]</span>.<a href="#section-3.1.6-4" class="pilcrow">¶</a></p>
 </section>
 </div>
 </section>
@@ -2158,7 +2158,7 @@ MIN_TOKEN_REUSE_TIME = (NON_LIFETIME + MAX_LATENCY +
             <p id="section-3.2-3.3.1">A client MAY revalidate a cached response by making a GET or FETCH request on the related unicast request URI.<a href="#section-3.2-3.3.1" class="pilcrow">¶</a></p>
 </li>
         </ul>
-<p id="section-3.2-4">Note that, in the presence of proxies, doing any of the above (optional) unicast requests requires the client to distinguish the different responses to a group request, as well as to distinguish the different origin servers that responded. This in turn requires additional means to provide the client with information about the origin server of each response, e.g., using the forward-proxying method defines in <span>[<a href="#I-D.tiloca-core-groupcomm-proxy" class="cite xref">I-D.tiloca-core-groupcomm-proxy</a>]</span>.<a href="#section-3.2-4" class="pilcrow">¶</a></p>
+<p id="section-3.2-4">Note that, in the presence of proxies, doing any of the above (optional) unicast requests requires the client to distinguish the different responses to a group request, as well as to distinguish the different origin servers that responded. This in turn requires additional means to provide the client with information about the origin server of each response, e.g., using the forward-proxying method defines in <span>[<a href="#I-D.ietf-core-groupcomm-proxy" class="cite xref">I-D.ietf-core-groupcomm-proxy</a>]</span>.<a href="#section-3.2-4" class="pilcrow">¶</a></p>
 <p id="section-3.2-5">The following subsections define the freshness model and validation model to use for cached responses, which update the models defined in Sections <a href="https://rfc-editor.org/rfc/rfc7252#section-5.6.1" class="relref">5.6.1</a> and <a href="https://rfc-editor.org/rfc/rfc7252#section-5.6.2" class="relref">5.6.2</a> of <span>[<a href="#RFC7252" class="cite xref">RFC7252</a>]</span>, respectively.<a href="#section-3.2-5" class="pilcrow">¶</a></p>
 <div id="sec-caching-freshness">
 <section id="section-3.2.1">
@@ -2175,7 +2175,7 @@ That is, a request is never served from cached responses only. This document upd
 </li>
           </ul>
 <p id="section-3.2.1-4">How the client in the case above determines the CoAP servers that are currently members of the CoAP group is out of scope for this document. It may be, for example, via a group manager server, or by monitoring group joining protocol exchanges.<a href="#section-3.2.1-4" class="pilcrow">¶</a></p>
-<p id="section-3.2.1-5">For caching at proxies, the freshness model defined in <span>[<a href="#I-D.tiloca-core-groupcomm-proxy" class="cite xref">I-D.tiloca-core-groupcomm-proxy</a>]</span>  can be used.<a href="#section-3.2.1-5" class="pilcrow">¶</a></p>
+<p id="section-3.2.1-5">For caching at proxies, the freshness model defined in <span>[<a href="#I-D.ietf-core-groupcomm-proxy" class="cite xref">I-D.ietf-core-groupcomm-proxy</a>]</span> can be used.<a href="#section-3.2.1-5" class="pilcrow">¶</a></p>
 </section>
 </div>
 <div id="sec-caching-validation">
@@ -2185,7 +2185,7 @@ That is, a request is never served from cached responses only. This document upd
           </h4>
 <p id="section-3.2.2-1">For validation of cached group communication responses at client endpoints, the multicast validation rules in <span><a href="https://rfc-editor.org/rfc/rfc7252#section-8.2.1" class="relref">Section 8.2.1</a> of [<a href="#RFC7252" class="cite xref">RFC7252</a>]</span> apply, except for the last paragraph which states "A GET request to a multicast group MUST NOT contain an ETag option".
 This document updates <span>[<a href="#RFC7252" class="cite xref">RFC7252</a>]</span> by allowing a group request to contain ETag Options as specified below.<a href="#section-3.2.2-1" class="pilcrow">¶</a></p>
-<p id="section-3.2.2-2">For validation at proxies, the validation model defined in <span>[<a href="#I-D.tiloca-core-groupcomm-proxy" class="cite xref">I-D.tiloca-core-groupcomm-proxy</a>]</span> can be used.<a href="#section-3.2.2-2" class="pilcrow">¶</a></p>
+<p id="section-3.2.2-2">For validation at proxies, the validation model defined in <span>[<a href="#I-D.ietf-core-groupcomm-proxy" class="cite xref">I-D.ietf-core-groupcomm-proxy</a>]</span> can be used.<a href="#section-3.2.2-2" class="pilcrow">¶</a></p>
 <div id="etag-option-in-a-group-requestresponse">
 <section id="section-3.2.2.1">
             <h5 id="name-etag-option-in-a-group-requ">
@@ -2253,7 +2253,7 @@ Therefore, while still capable to forward the group request to the CoAP group an
 In principle, a CoAP client that is not using a proxy might face the same problems in collecting responses to a group request. However, unlike a CoAP proxy, the client itself would typically have application-specific rules or knowledge on how to handle this situation. For example, a CoAP client could monitor incoming responses and use this information to decide for how long to continue collecting responses<a href="#section-3.5.1-4.3.3" class="pilcrow">¶</a></p>
 </li>
           </ul>
-<p id="section-3.5.1-5">A forward-proxying method using this approach and addressing the issues raised above is defined in <span>[<a href="#I-D.tiloca-core-groupcomm-proxy" class="cite xref">I-D.tiloca-core-groupcomm-proxy</a>]</span>.<a href="#section-3.5.1-5" class="pilcrow">¶</a></p>
+<p id="section-3.5.1-5">A forward-proxying method using this approach and addressing the issues raised above is defined in <span>[<a href="#I-D.ietf-core-groupcomm-proxy" class="cite xref">I-D.ietf-core-groupcomm-proxy</a>]</span>.<a href="#section-3.5.1-5" class="pilcrow">¶</a></p>
 <p id="section-3.5.1-6">An alternative solution is for the proxy to collect all the individual (unicast) responses to a CoAP group request and then send back only a single (aggregated) response to the client. However, this solution brings up new issues:<a href="#section-3.5.1-6" class="pilcrow">¶</a></p>
 <ul class="normal">
 <li class="normal" id="section-3.5.1-7.1">
@@ -2265,7 +2265,7 @@ In principle, a CoAP client that is not using a proxy might face the same proble
           </ul>
 <p id="section-3.5.1-8">Due to the above issues, it is RECOMMENDED that a CoAP Proxy processes a request to be forwarded to a group URI only if it is explicitly enabled to do so. If such functionality is not explicitly enabled, the default response returned to the client is 5.01 Not Implemented. Furthermore, a proxy SHOULD be explicitly configured (e.g., by allow-listing and/or client authentication) to allow proxied CoAP group requests only from specific client(s).<a href="#section-3.5.1-8" class="pilcrow">¶</a></p>
 <p id="section-3.5.1-9">The operation of HTTP-to-CoAP proxies for multicast CoAP requests is specified in Sections <a href="https://rfc-editor.org/rfc/rfc8075#section-8.4" class="relref">8.4</a> and <a href="https://rfc-editor.org/rfc/rfc8075#section-10.1" class="relref">10.1</a> of <span>[<a href="#RFC8075" class="cite xref">RFC8075</a>]</span>. In this case, the "application/http" media type is used to let the proxy return multiple CoAP responses -- each translated to a HTTP response -- back to the HTTP client. Of course, in this case the HTTP client sending a group URI to the proxy needs to be aware that it is going to receive this format, and needs to be able to decode it into the responses of multiple CoAP servers. Also, the IP source address of each CoAP response cannot be determined anymore from the "application/http" response. The HTTP client may still be able to identify the CoAP servers by other means such as application-specific information in the response payload.<a href="#section-3.5.1-9" class="pilcrow">¶</a></p>
-<p id="section-3.5.1-10">A forward-proxying method for HTTP-to-CoAP proxies addressing the issues raised above is defined in <span>[<a href="#I-D.tiloca-core-groupcomm-proxy" class="cite xref">I-D.tiloca-core-groupcomm-proxy</a>]</span>.<a href="#section-3.5.1-10" class="pilcrow">¶</a></p>
+<p id="section-3.5.1-10">A forward-proxying method for HTTP-to-CoAP proxies addressing the issues raised above is defined in <span>[<a href="#I-D.ietf-core-groupcomm-proxy" class="cite xref">I-D.ietf-core-groupcomm-proxy</a>]</span>.<a href="#section-3.5.1-10" class="pilcrow">¶</a></p>
 </section>
 </div>
 <div id="sec-proxy-reverse">
@@ -2280,10 +2280,10 @@ In principle, a CoAP client that is not using a proxy might face the same proble
 <p id="section-3.5.2-5">For a reverse-proxy that sends a request to servers in a CoAP group, the considerations as defined in <span><a href="https://rfc-editor.org/rfc/rfc7252#section-5.7.3" class="relref">Section 5.7.3</a> of [<a href="#RFC7252" class="cite xref">RFC7252</a>]</span> hold, with the following additions:<a href="#section-3.5.2-5" class="pilcrow">¶</a></p>
 <ul class="normal">
 <li class="normal" id="section-3.5.2-6.1">
-              <p id="section-3.5.2-6.1.1">The three issues and limitations defined in <a href="#sec-proxy-forward" class="auto internal xref">Section 3.5.1</a> for a forward proxy apply to a reverse-proxy as well, and have to be addressed, e.g., using the signaling method defined in <span>[<a href="#I-D.tiloca-core-groupcomm-proxy" class="cite xref">I-D.tiloca-core-groupcomm-proxy</a>]</span> or other means.<a href="#section-3.5.2-6.1.1" class="pilcrow">¶</a></p>
+              <p id="section-3.5.2-6.1.1">The three issues and limitations defined in <a href="#sec-proxy-forward" class="auto internal xref">Section 3.5.1</a> for a forward proxy apply to a reverse-proxy as well, and have to be addressed, e.g., using the signaling method defined in <span>[<a href="#I-D.ietf-core-groupcomm-proxy" class="cite xref">I-D.ietf-core-groupcomm-proxy</a>]</span> or other means.<a href="#section-3.5.2-6.1.1" class="pilcrow">¶</a></p>
 </li>
             <li class="normal" id="section-3.5.2-6.2">
-              <p id="section-3.5.2-6.2.1">A reverse-proxy MAY have preconfigured time duration(s) that are used for collecting server responses and forwarding these back to the client. These duration(s) may be set as global configuration or as resource-specific configurations. If there is such preconfiguration, then an explicit signaling of the time period in the client's request as defined in <span>[<a href="#I-D.tiloca-core-groupcomm-proxy" class="cite xref">I-D.tiloca-core-groupcomm-proxy</a>]</span> is not necessarily needed. Note that a reverse-proxy is in an explicit relation with the origin servers it stands in for. Thus, compared to a forward-proxy, it has a much better basis for determining and configuring such time durations.<a href="#section-3.5.2-6.2.1" class="pilcrow">¶</a></p>
+              <p id="section-3.5.2-6.2.1">A reverse-proxy MAY have preconfigured time duration(s) that are used for collecting server responses and forwarding these back to the client. These duration(s) may be set as global configuration or as resource-specific configurations. If there is such preconfiguration, then an explicit signaling of the time period in the client's request as defined in <span>[<a href="#I-D.ietf-core-groupcomm-proxy" class="cite xref">I-D.ietf-core-groupcomm-proxy</a>]</span> is not necessarily needed. Note that a reverse-proxy is in an explicit relation with the origin servers it stands in for. Thus, compared to a forward-proxy, it has a much better basis for determining and configuring such time durations.<a href="#section-3.5.2-6.2.1" class="pilcrow">¶</a></p>
 </li>
             <li class="normal" id="section-3.5.2-6.3">
               <p id="section-3.5.2-6.3.1">A client that is configured to access a reverse-proxy resource (i.e., one that triggers a CoAP group communication request) SHOULD be configured also to handle potentially multiple responses with the same Token value caused by a single request.<a href="#section-3.5.2-6.3.1" class="pilcrow">¶</a></p>
@@ -2295,7 +2295,7 @@ That is, the client needs to preserve the Token value used for the request also 
 <p id="section-3.5.2-6.4.2">
 If this happens, the reverse-proxy MUST stop the ongoing request and associated response forwarding, it MUST NOT forward the new request to the servers in the CoAP group, and it MUST send a 4.00 (Bad Request) error response to the client. The diagnostic payload of the error response SHOULD indicate to the client that the resource is a reverse-proxy resource, and that for this reason immediate Token re-use is not possible.<a href="#section-3.5.2-6.4.2" class="pilcrow">¶</a></p>
 <p id="section-3.5.2-6.4.3">
-If the reverse-proxy supports the signaling protocol of <span>[<a href="#I-D.tiloca-core-groupcomm-proxy" class="cite xref">I-D.tiloca-core-groupcomm-proxy</a>]</span> it can include a Multicast-Signaling Option in the error response to convey the reason for the error in a machine-readable way.<a href="#section-3.5.2-6.4.3" class="pilcrow">¶</a></p>
+If the reverse-proxy supports the signaling protocol of <span>[<a href="#I-D.ietf-core-groupcomm-proxy" class="cite xref">I-D.ietf-core-groupcomm-proxy</a>]</span> it can include a Multicast-Signaling Option in the error response to convey the reason for the error in a machine-readable way.<a href="#section-3.5.2-6.4.3" class="pilcrow">¶</a></p>
 </li>
           </ul>
 <p id="section-3.5.2-7">For the operation of HTTP-to-CoAP reverse proxies, see the last two paragraphs of <a href="#sec-proxy-forward" class="auto internal xref">Section 3.5.1</a> which applies also to the case of reverse-proxies.<a href="#section-3.5.2-7" class="pilcrow">¶</a></p>
@@ -2318,7 +2318,7 @@ If the reverse-proxy supports the signaling protocol of <span>[<a href="#I-D.til
                   <p id="section-3.5.3-2.2.2.1.1">Each server can reply to each of the N received requests with multiple responses over time (see <a href="#sec-request-response-multi" class="auto internal xref">Section 3.1.6</a>). All the responses to the same received request are sent to the same proxy that has forwarded that request, which in turn relays those responses to the client.<a href="#section-3.5.3-2.2.2.1.1" class="pilcrow">¶</a></p>
 </li>
                 <li class="normal" id="section-3.5.3-2.2.2.2">
-                  <p id="section-3.5.3-2.2.2.2.1">From each proxy, the client receives all the responses to the group request that each server has sent to that proxy. Even in case the client is able to distinguish the different servers originating the responses (e.g., by using the approach defined in <span>[<a href="#I-D.tiloca-core-groupcomm-proxy" class="cite xref">I-D.tiloca-core-groupcomm-proxy</a>]</span>), the client would receive the same response content originated by each server N times, as relayed by the N proxies.<a href="#section-3.5.3-2.2.2.2.1" class="pilcrow">¶</a></p>
+                  <p id="section-3.5.3-2.2.2.2.1">From each proxy, the client receives all the responses to the group request that each server has sent to that proxy. Even in case the client is able to distinguish the different servers originating the responses (e.g., by using the approach defined in <span>[<a href="#I-D.ietf-core-groupcomm-proxy" class="cite xref">I-D.ietf-core-groupcomm-proxy</a>]</span>), the client would receive the same response content originated by each server N times, as relayed by the N proxies.<a href="#section-3.5.3-2.2.2.2.1" class="pilcrow">¶</a></p>
 </li>
               </ul>
 </li>
@@ -2394,7 +2394,7 @@ As a consequence, for each server, the client receives responses originated by t
 <p id="section-3.7-9">A server that receives a GET or FETCH request with the Observe Option, for which request processing is successful, SHOULD respond to this request and not suppress the response. If a server adds a client (as a new entry) to the list of observers for a resource due to an Observe request, the server SHOULD respond to this request and SHOULD NOT suppress the response. An exception to the above is the overriding of response suppression according to a CoAP No-Response Option <span>[<a href="#RFC7967" class="cite xref">RFC7967</a>]</span> specified by the client in the GET or FETCH request (see <a href="#sec-request-response-suppress" class="auto internal xref">Section 3.1.2</a>).<a href="#section-3.7-9" class="pilcrow">¶</a></p>
 <p id="section-3.7-10">A server SHOULD have a mechanism to verify the aliveness of its observing clients and the continued interest of these clients in receiving the observe notifications. This can be implemented by sending notifications occasionally using a Confirmable message (see <span><a href="https://rfc-editor.org/rfc/rfc7641#section-4.5" class="relref">Section 4.5</a> of [<a href="#RFC7641" class="cite xref">RFC7641</a>]</span> for details). This requirement overrides the regular behavior of sending Non-confirmable notifications in response to a Non-confirmable request.<a href="#section-3.7-10" class="pilcrow">¶</a></p>
 <p id="section-3.7-11">A client can use the unicast cancellation methods of <span><a href="https://rfc-editor.org/rfc/rfc7641#section-3.6" class="relref">Section 3.6</a> of [<a href="#RFC7641" class="cite xref">RFC7641</a>]</span> and stop the ongoing observation of a particular resource on members of a CoAP group. This can be used to remove specific observed servers, or even all servers in the CoAP group (using serial unicast to each known group member). In addition, a client MAY explicitly deregister from all those servers at once, by sending a group/multicast GET or FETCH request that includes the Token value of the observation to be canceled and includes an Observe Option with the value set to 1 (deregister). In case not all the servers in the CoAP group received this deregistration request, either the unicast cancellation methods can be used at a later point in time or the group/multicast deregistration request MAY be repeated upon receiving another observe response from a server.<a href="#section-3.7-11" class="pilcrow">¶</a></p>
-<p id="section-3.7-12">For observing at servers that are members of a CoAP group through a CoAP-to-CoAP proxy, the limitations stated in <a href="#sec-proxy" class="auto internal xref">Section 3.5</a> apply. The method defined in <span>[<a href="#I-D.tiloca-core-groupcomm-proxy" class="cite xref">I-D.tiloca-core-groupcomm-proxy</a>]</span> enables group communication including resource observation through proxies and addresses those limitations.<a href="#section-3.7-12" class="pilcrow">¶</a></p>
+<p id="section-3.7-12">For observing at servers that are members of a CoAP group through a CoAP-to-CoAP proxy, the limitations stated in <a href="#sec-proxy" class="auto internal xref">Section 3.5</a> apply. The method defined in <span>[<a href="#I-D.ietf-core-groupcomm-proxy" class="cite xref">I-D.ietf-core-groupcomm-proxy</a>]</span> enables group communication including resource observation through proxies and addresses those limitations.<a href="#section-3.7-12" class="pilcrow">¶</a></p>
 </section>
 </div>
 <div id="sec-block-wise">
@@ -2589,7 +2589,7 @@ In such a case, new security material to use in the OSCORE group has first to be
 <p id="section-5.2-2.2.2">
 This ensures forward security in the OSCORE group. That is, it ensures that only the members intended to remain in the OSCORE group are able to continue participating in the secure communications within that group, while the evicted ones are not able to participate after the distribution and installation of the new security material.<a href="#section-5.2-2.2.2" class="pilcrow">¶</a></p>
 <p id="section-5.2-2.2.3">
-Also, this ensures that the members intended to remain in the OSCORE group are able to confidently assert the group membership of other sender nodes, when receiving protected messages in the OSCORE group after the distribution and installation of the new security material (see <span><a href="https://datatracker.ietf.org/doc/html/draft-ietf-core-oscore-groupcomm-20#section-3.2" class="relref">Section 3.2</a> of [<a href="#I-D.ietf-core-oscore-groupcomm" class="cite xref">I-D.ietf-core-oscore-groupcomm</a>]</span>).<a href="#section-5.2-2.2.3" class="pilcrow">¶</a></p>
+Also, this ensures that the members intended to remain in the OSCORE group are able to confidently assert the group membership of other sender nodes, when receiving protected messages in the OSCORE group after the distribution and installation of the new security material (see <span><a href="https://datatracker.ietf.org/doc/html/draft-ietf-core-oscore-groupcomm-21#section-3.2" class="relref">Section 3.2</a> of [<a href="#I-D.ietf-core-oscore-groupcomm" class="cite xref">I-D.ietf-core-oscore-groupcomm</a>]</span>).<a href="#section-5.2-2.2.3" class="pilcrow">¶</a></p>
 </li>
         </ul>
 <p id="section-5.2-3">The key management operations mentioned above are entrusted to the Group Manager responsible for the OSCORE group <span>[<a href="#I-D.ietf-core-oscore-groupcomm" class="cite xref">I-D.ietf-core-oscore-groupcomm</a>]</span>, and it is RECOMMENDED to perform them as defined in <span>[<a href="#I-D.ietf-ace-key-groupcomm-oscore" class="cite xref">I-D.ietf-ace-key-groupcomm-oscore</a>]</span>.<a href="#section-5.2-3" class="pilcrow">¶</a></p>
@@ -2605,7 +2605,7 @@ Also, this ensures that the members intended to remain in the OSCORE group are a
 <p id="section-5.3-3">For a client performing a group communication request via a reverse-proxy, either end-to-end-security or hop-by-hop security can be implemented.
 The case of end-to-end security is the same as for the forward-proxy case.<a href="#section-5.3-3" class="pilcrow">¶</a></p>
 <p id="section-5.3-4">The case of hop-by-hop security is only possible if the proxy can be completely trusted and it is configured as a member of the OSCORE security group(s) that it needs to access, when sending a group request on behalf of clients. The first leg of communication between client and proxy is then protected with a security method for CoAP unicast, such as (D)TLS, OSCORE, or a combination of such methods. The second leg between proxy and servers is protected using Group OSCORE. This can be useful in applications where for example the origin client does not implement Group OSCORE, or the group management operations are confined to a particular network domain and the client is outside this domain.<a href="#section-5.3-4" class="pilcrow">¶</a></p>
-<p id="section-5.3-5">For all the above cases, more details on using Group OSCORE are defined in <span>[<a href="#I-D.tiloca-core-groupcomm-proxy" class="cite xref">I-D.tiloca-core-groupcomm-proxy</a>]</span>.<a href="#section-5.3-5" class="pilcrow">¶</a></p>
+<p id="section-5.3-5">For all the above cases, more details on using Group OSCORE are defined in <span>[<a href="#I-D.ietf-core-groupcomm-proxy" class="cite xref">I-D.ietf-core-groupcomm-proxy</a>]</span>.<a href="#section-5.3-5" class="pilcrow">¶</a></p>
 </section>
 </div>
 </section>
@@ -2638,13 +2638,13 @@ The requirement in <a href="#chap-unsecured-groupcomm" class="auto internal xref
         </h3>
 <p id="section-6.2-1">Group OSCORE provides end-to-end application-level security. This has many desirable properties, including maintaining security assurances while forwarding traffic through intermediaries (proxies). Application-level security also tends to more cleanly separate security from the specific dynamics of security group membership (e.g., the problem of distributing security keys across large groups with many members that come and go).<a href="#section-6.2-1" class="pilcrow">¶</a></p>
 <p id="section-6.2-2">CoAP group communication MUST be protected by using Group OSCORE as specified in <span>[<a href="#I-D.ietf-core-oscore-groupcomm" class="cite xref">I-D.ietf-core-oscore-groupcomm</a>]</span>, with the possible exception of specific, well-defined steps that are proven to not require security or to not be able to attain it (e.g., early discovery).<a href="#section-6.2-2" class="pilcrow">¶</a></p>
-<p id="section-6.2-3">The same security considerations from <span><a href="https://datatracker.ietf.org/doc/html/draft-ietf-core-oscore-groupcomm-20#section-13" class="relref">Section 13</a> of [<a href="#I-D.ietf-core-oscore-groupcomm" class="cite xref">I-D.ietf-core-oscore-groupcomm</a>]</span> hold for this specification.<a href="#section-6.2-3" class="pilcrow">¶</a></p>
+<p id="section-6.2-3">The same security considerations from <span><a href="https://datatracker.ietf.org/doc/html/draft-ietf-core-oscore-groupcomm-21#section-13" class="relref">Section 13</a> of [<a href="#I-D.ietf-core-oscore-groupcomm" class="cite xref">I-D.ietf-core-oscore-groupcomm</a>]</span> hold for this specification.<a href="#section-6.2-3" class="pilcrow">¶</a></p>
 <div id="chap-security-considerations-sec-mode-key-mgmt">
 <section id="section-6.2.1">
           <h4 id="name-group-key-management">
 <a href="#section-6.2.1" class="section-number selfRef">6.2.1. </a><a href="#name-group-key-management" class="section-name selfRef">Group Key Management</a>
           </h4>
-<p id="section-6.2.1-1">A key management scheme for secure revocation and renewal of group security material, namely group rekeying, is required to be adopted in OSCORE groups. The key management scheme has to preserve forward security in the OSCORE group, as well as backward security if this is required by the application (see <a href="#chap-sec-group-maintenance" class="auto internal xref">Section 5.2</a>). In particular, the key management scheme MUST comply with the functional steps defined in <span><a href="https://datatracker.ietf.org/doc/html/draft-ietf-core-oscore-groupcomm-20#section-3.2" class="relref">Section 3.2</a> of [<a href="#I-D.ietf-core-oscore-groupcomm" class="cite xref">I-D.ietf-core-oscore-groupcomm</a>]</span>.<a href="#section-6.2.1-1" class="pilcrow">¶</a></p>
+<p id="section-6.2.1-1">A key management scheme for secure revocation and renewal of group security material, namely group rekeying, is required to be adopted in OSCORE groups. The key management scheme has to preserve forward security in the OSCORE group, as well as backward security if this is required by the application (see <a href="#chap-sec-group-maintenance" class="auto internal xref">Section 5.2</a>). In particular, the key management scheme MUST comply with the functional steps defined in <span><a href="https://datatracker.ietf.org/doc/html/draft-ietf-core-oscore-groupcomm-21#section-3.2" class="relref">Section 3.2</a> of [<a href="#I-D.ietf-core-oscore-groupcomm" class="cite xref">I-D.ietf-core-oscore-groupcomm</a>]</span>.<a href="#section-6.2.1-1" class="pilcrow">¶</a></p>
 <p id="section-6.2.1-2">Even though security group policies vary depending on the specific applications and their security requirements, they SHOULD also take into account:<a href="#section-6.2.1-2" class="pilcrow">¶</a></p>
 <ul class="normal">
 <li class="normal" id="section-6.2.1-3.1">
@@ -2682,14 +2682,14 @@ The requirement in <a href="#chap-unsecured-groupcomm" class="auto internal xref
 <p id="section-6.2.3-1">As discussed below, Group OSCORE addresses a number of security attacks mentioned in <span><a href="https://rfc-editor.org/rfc/rfc7252#section-11" class="relref">Section 11</a> of [<a href="#RFC7252" class="cite xref">RFC7252</a>]</span>, with particular reference to their execution over IP multicast.<a href="#section-6.2.3-1" class="pilcrow">¶</a></p>
 <ul class="normal">
 <li class="normal" id="section-6.2.3-2.1">
-              <p id="section-6.2.3-2.1.1">Since Group OSCORE provides end-to-end confidentiality and integrity of request/response messages, proxies capable of group communication cannot break message protection, and thus cannot act as man-in-the-middle beyond their legitimate duties (see <span><a href="https://rfc-editor.org/rfc/rfc7252#section-11.2" class="relref">Section 11.2</a> of [<a href="#RFC7252" class="cite xref">RFC7252</a>]</span>). In fact, intermediaries such as proxies are not assumed to have access to the OSCORE Security Context used by OSCORE group members. Also, with the notable addition of signatures for the group mode, Group OSCORE protects messages using the same procedure as OSCORE (see Sections <a href="https://datatracker.ietf.org/doc/html/draft-ietf-core-oscore-groupcomm-20#section-8" class="relref">8</a> and <a href="https://datatracker.ietf.org/doc/html/draft-ietf-core-oscore-groupcomm-20#section-9" class="relref">9</a> of <span>[<a href="#I-D.ietf-core-oscore-groupcomm" class="cite xref">I-D.ietf-core-oscore-groupcomm</a>]</span>), and especially processes CoAP options according to the same classification in U/I/E classes.<a href="#section-6.2.3-2.1.1" class="pilcrow">¶</a></p>
+              <p id="section-6.2.3-2.1.1">Since Group OSCORE provides end-to-end confidentiality and integrity of request/response messages, proxies capable of group communication cannot break message protection, and thus cannot act as man-in-the-middle beyond their legitimate duties (see <span><a href="https://rfc-editor.org/rfc/rfc7252#section-11.2" class="relref">Section 11.2</a> of [<a href="#RFC7252" class="cite xref">RFC7252</a>]</span>). In fact, intermediaries such as proxies are not assumed to have access to the OSCORE Security Context used by OSCORE group members. Also, with the notable addition of signatures for the group mode, Group OSCORE protects messages using the same procedure as OSCORE (see Sections <a href="https://datatracker.ietf.org/doc/html/draft-ietf-core-oscore-groupcomm-21#section-8" class="relref">8</a> and <a href="https://datatracker.ietf.org/doc/html/draft-ietf-core-oscore-groupcomm-21#section-9" class="relref">9</a> of <span>[<a href="#I-D.ietf-core-oscore-groupcomm" class="cite xref">I-D.ietf-core-oscore-groupcomm</a>]</span>), and especially processes CoAP options according to the same classification in U/I/E classes.<a href="#section-6.2.3-2.1.1" class="pilcrow">¶</a></p>
 </li>
             <li class="normal" id="section-6.2.3-2.2">
               <p id="section-6.2.3-2.2.1">Group OSCORE limits the feasibility and impact of amplification attacks (see <a href="#ssec-amplification" class="auto internal xref">Section 6.3</a> of this document and <span><a href="https://rfc-editor.org/rfc/rfc7252#section-11.3" class="relref">Section 11.3</a> of [<a href="#RFC7252" class="cite xref">RFC7252</a>]</span>), thanks to the handling of protected group requests on the server side. That is, upon receiving a group request protected with Group OSCORE, a server verifies whether the request is not a replay, and whether it has been originated and sent by the alleged CoAP endpoint in the OSCORE group.<a href="#section-6.2.3-2.2.1" class="pilcrow">¶</a></p>
 <p id="section-6.2.3-2.2.2">
-In order to perform the latter check of source authentication, the server either: i) verifies the signature included in the request by using the public key of the client, when the request is protected using the group mode (see <span><a href="https://datatracker.ietf.org/doc/html/draft-ietf-core-oscore-groupcomm-20#section-8.2" class="relref">Section 8.2</a> of [<a href="#I-D.ietf-core-oscore-groupcomm" class="cite xref">I-D.ietf-core-oscore-groupcomm</a>]</span>); or ii) decrypts and verifies the request by means of an additionally derived pairwise key associated with the client, when the request is protected using the pairwise mode (see <span><a href="https://datatracker.ietf.org/doc/html/draft-ietf-core-oscore-groupcomm-20#section-9.4" class="relref">Section 9.4</a> of [<a href="#I-D.ietf-core-oscore-groupcomm" class="cite xref">I-D.ietf-core-oscore-groupcomm</a>]</span>).<a href="#section-6.2.3-2.2.2" class="pilcrow">¶</a></p>
+In order to perform the latter check of source authentication, the server either: i) verifies the signature included in the request by using the public key of the client, when the request is protected using the group mode (see <span><a href="https://datatracker.ietf.org/doc/html/draft-ietf-core-oscore-groupcomm-21#section-8.2" class="relref">Section 8.2</a> of [<a href="#I-D.ietf-core-oscore-groupcomm" class="cite xref">I-D.ietf-core-oscore-groupcomm</a>]</span>); or ii) decrypts and verifies the request by means of an additionally derived pairwise key associated with the client, when the request is protected using the pairwise mode (see <span><a href="https://datatracker.ietf.org/doc/html/draft-ietf-core-oscore-groupcomm-21#section-9.4" class="relref">Section 9.4</a> of [<a href="#I-D.ietf-core-oscore-groupcomm" class="cite xref">I-D.ietf-core-oscore-groupcomm</a>]</span>).<a href="#section-6.2.3-2.2.2" class="pilcrow">¶</a></p>
 <p id="section-6.2.3-2.2.3">
-As also discussed in <span><a href="https://datatracker.ietf.org/doc/html/draft-ietf-core-oscore-groupcomm-20#section-8" class="relref">Section 8</a> of [<a href="#I-D.ietf-core-oscore-groupcomm" class="cite xref">I-D.ietf-core-oscore-groupcomm</a>]</span>, it is recommended that, when failing to decrypt and verify an incoming group request protected with the group mode, a server does not send back any error message in case any of the following holds: the server determines that the request was indeed sent to the whole CoAP group (e.g., over IP multicast); or the server is not able to determine it altogether.<a href="#section-6.2.3-2.2.3" class="pilcrow">¶</a></p>
+As also discussed in <span><a href="https://datatracker.ietf.org/doc/html/draft-ietf-core-oscore-groupcomm-21#section-8" class="relref">Section 8</a> of [<a href="#I-D.ietf-core-oscore-groupcomm" class="cite xref">I-D.ietf-core-oscore-groupcomm</a>]</span>, it is recommended that, when failing to decrypt and verify an incoming group request protected with the group mode, a server does not send back any error message in case any of the following holds: the server determines that the request was indeed sent to the whole CoAP group (e.g., over IP multicast); or the server is not able to determine it altogether.<a href="#section-6.2.3-2.2.3" class="pilcrow">¶</a></p>
 <p id="section-6.2.3-2.2.4">
 Such a message processing on the server limits an adversary to leveraging an intercepted group request protected with Group OSCORE, and then altering the source address to be the one of the intended amplification victim.<a href="#section-6.2.3-2.2.4" class="pilcrow">¶</a></p>
 <p id="section-6.2.3-2.2.5">
@@ -2702,7 +2702,7 @@ Using the Echo Option does not provide authentication of source addressing infor
             <li class="normal" id="section-6.2.3-2.3">
               <p id="section-6.2.3-2.3.1">Group OSCORE limits the impact of attacks based on IP spoofing over IP multicast (see <span><a href="https://rfc-editor.org/rfc/rfc7252#section-11.4" class="relref">Section 11.4</a> of [<a href="#RFC7252" class="cite xref">RFC7252</a>]</span>). In fact, requests and corresponding responses sent in the OSCORE group can be correctly generated only by CoAP endpoints that are legitimate members of the group.<a href="#section-6.2.3-2.3.1" class="pilcrow">¶</a></p>
 <p id="section-6.2.3-2.3.2">
-Within an OSCORE group, the shared symmetric-key security material strictly provides only group-level authentication. However, source authentication of messages is also ensured, both in the group mode by means of signatures (see Sections <a href="https://datatracker.ietf.org/doc/html/draft-ietf-core-oscore-groupcomm-20#section-8.1" class="relref">8.1</a> and <a href="https://datatracker.ietf.org/doc/html/draft-ietf-core-oscore-groupcomm-20#section-8.3" class="relref">8.3</a> of <span>[<a href="#I-D.ietf-core-oscore-groupcomm" class="cite xref">I-D.ietf-core-oscore-groupcomm</a>]</span>), and in the pairwise mode by using additionally derived pairwise keys (see Sections <a href="https://datatracker.ietf.org/doc/html/draft-ietf-core-oscore-groupcomm-20#section-9.3" class="relref">9.3</a> and <a href="https://datatracker.ietf.org/doc/html/draft-ietf-core-oscore-groupcomm-20#section-9.5" class="relref">9.5</a> of <span>[<a href="#I-D.ietf-core-oscore-groupcomm" class="cite xref">I-D.ietf-core-oscore-groupcomm</a>]</span>). Thus, recipient endpoints can verify a message to have been originated and sent by the alleged, identifiable CoAP endpoint in the OSCORE group.<a href="#section-6.2.3-2.3.2" class="pilcrow">¶</a></p>
+Within an OSCORE group, the shared symmetric-key security material strictly provides only group-level authentication. However, source authentication of messages is also ensured, both in the group mode by means of signatures (see Sections <a href="https://datatracker.ietf.org/doc/html/draft-ietf-core-oscore-groupcomm-21#section-8.1" class="relref">8.1</a> and <a href="https://datatracker.ietf.org/doc/html/draft-ietf-core-oscore-groupcomm-21#section-8.3" class="relref">8.3</a> of <span>[<a href="#I-D.ietf-core-oscore-groupcomm" class="cite xref">I-D.ietf-core-oscore-groupcomm</a>]</span>), and in the pairwise mode by using additionally derived pairwise keys (see Sections <a href="https://datatracker.ietf.org/doc/html/draft-ietf-core-oscore-groupcomm-21#section-9.3" class="relref">9.3</a> and <a href="https://datatracker.ietf.org/doc/html/draft-ietf-core-oscore-groupcomm-21#section-9.5" class="relref">9.5</a> of <span>[<a href="#I-D.ietf-core-oscore-groupcomm" class="cite xref">I-D.ietf-core-oscore-groupcomm</a>]</span>). Thus, recipient endpoints can verify a message to have been originated and sent by the alleged, identifiable CoAP endpoint in the OSCORE group.<a href="#section-6.2.3-2.3.2" class="pilcrow">¶</a></p>
 <p id="section-6.2.3-2.3.3">
 As noted above, the server may additionally rely on the Echo Option for CoAP defined in <span>[<a href="#RFC9175" class="cite xref">RFC9175</a>]</span>, in order to verify the aliveness and reachability of the client sending a request from a particular IP address.<a href="#section-6.2.3-2.3.3" class="pilcrow">¶</a></p>
 </li>
@@ -2850,7 +2850,7 @@ mode (see <a href="#chap-unsecured-groupcomm" class="auto internal xref">Section
 <dl class="references">
 <dt id="I-D.ietf-core-oscore-groupcomm">[I-D.ietf-core-oscore-groupcomm]</dt>
         <dd>
-<span class="refAuthor">Tiloca, M.</span>, <span class="refAuthor">Selander, G.</span>, <span class="refAuthor">Palombini, F.</span>, <span class="refAuthor">Mattsson, J. P.</span>, and <span class="refAuthor">J. Park</span>, <span class="refTitle">"Group Object Security for Constrained RESTful Environments (Group OSCORE)"</span>, <span class="refContent">Work in Progress</span>, <span class="seriesInfo">Internet-Draft, draft-ietf-core-oscore-groupcomm-20</span>, <time datetime="2023-09-02" class="refDate">2 September 2023</time>, <span>&lt;<a href="https://datatracker.ietf.org/doc/html/draft-ietf-core-oscore-groupcomm-20">https://datatracker.ietf.org/doc/html/draft-ietf-core-oscore-groupcomm-20</a>&gt;</span>. </dd>
+<span class="refAuthor">Tiloca, M.</span>, <span class="refAuthor">Selander, G.</span>, <span class="refAuthor">Palombini, F.</span>, <span class="refAuthor">Mattsson, J. P.</span>, and <span class="refAuthor">R. Höglund</span>, <span class="refTitle">"Group Object Security for Constrained RESTful Environments (Group OSCORE)"</span>, <span class="refContent">Work in Progress</span>, <span class="seriesInfo">Internet-Draft, draft-ietf-core-oscore-groupcomm-21</span>, <time datetime="2024-03-04" class="refDate">4 March 2024</time>, <span>&lt;<a href="https://datatracker.ietf.org/doc/html/draft-ietf-core-oscore-groupcomm-21">https://datatracker.ietf.org/doc/html/draft-ietf-core-oscore-groupcomm-21</a>&gt;</span>. </dd>
 <dd class="break"></dd>
 <dt id="RFC1122">[RFC1122]</dt>
         <dd>
@@ -2939,11 +2939,11 @@ mode (see <a href="#chap-unsecured-groupcomm" class="auto internal xref">Section
 <dd class="break"></dd>
 <dt id="I-D.bormann-core-responses">[I-D.bormann-core-responses]</dt>
         <dd>
-<span class="refAuthor">Bormann, C.</span> and <span class="refAuthor">C. Amsüss</span>, <span class="refTitle">"CoAP: Non-traditional response forms"</span>, <span class="refContent">Work in Progress</span>, <span class="seriesInfo">Internet-Draft, draft-bormann-core-responses-01</span>, <time datetime="2022-02-03" class="refDate">3 February 2022</time>, <span>&lt;<a href="https://datatracker.ietf.org/doc/html/draft-bormann-core-responses-01">https://datatracker.ietf.org/doc/html/draft-bormann-core-responses-01</a>&gt;</span>. </dd>
+<span class="refAuthor">Bormann, C.</span> and <span class="refAuthor">C. Amsüss</span>, <span class="refTitle">"CoAP: Non-traditional response forms"</span>, <span class="refContent">Work in Progress</span>, <span class="seriesInfo">Internet-Draft, draft-bormann-core-responses-02</span>, <time datetime="2024-03-03" class="refDate">3 March 2024</time>, <span>&lt;<a href="https://datatracker.ietf.org/doc/html/draft-bormann-core-responses-02">https://datatracker.ietf.org/doc/html/draft-bormann-core-responses-02</a>&gt;</span>. </dd>
 <dd class="break"></dd>
 <dt id="I-D.ietf-6lo-multicast-registration">[I-D.ietf-6lo-multicast-registration]</dt>
         <dd>
-<span class="refAuthor">Thubert, P.</span>, <span class="refTitle">"IPv6 Neighbor Discovery Multicast and Anycast Address Listener Subscription"</span>, <span class="refContent">Work in Progress</span>, <span class="seriesInfo">Internet-Draft, draft-ietf-6lo-multicast-registration-16</span>, <time datetime="2023-11-10" class="refDate">10 November 2023</time>, <span>&lt;<a href="https://datatracker.ietf.org/doc/html/draft-ietf-6lo-multicast-registration-16">https://datatracker.ietf.org/doc/html/draft-ietf-6lo-multicast-registration-16</a>&gt;</span>. </dd>
+<span class="refAuthor">Thubert, P.</span>, <span class="refTitle">"IPv6 Neighbor Discovery Multicast and Anycast Address Listener Subscription"</span>, <span class="refContent">Work in Progress</span>, <span class="seriesInfo">Internet-Draft, draft-ietf-6lo-multicast-registration-18</span>, <time datetime="2024-04-16" class="refDate">16 April 2024</time>, <span>&lt;<a href="https://datatracker.ietf.org/doc/html/draft-ietf-6lo-multicast-registration-18">https://datatracker.ietf.org/doc/html/draft-ietf-6lo-multicast-registration-18</a>&gt;</span>. </dd>
 <dd class="break"></dd>
 <dt id="I-D.ietf-ace-key-groupcomm-oscore">[I-D.ietf-ace-key-groupcomm-oscore]</dt>
         <dd>
@@ -2951,31 +2951,31 @@ mode (see <a href="#chap-unsecured-groupcomm" class="auto internal xref">Section
 <dd class="break"></dd>
 <dt id="I-D.ietf-ace-oscore-gm-admin">[I-D.ietf-ace-oscore-gm-admin]</dt>
         <dd>
-<span class="refAuthor">Tiloca, M.</span>, <span class="refAuthor">Höglund, R.</span>, <span class="refAuthor">Van der Stok, P.</span>, and <span class="refAuthor">F. Palombini</span>, <span class="refTitle">"Admin Interface for the OSCORE Group Manager"</span>, <span class="refContent">Work in Progress</span>, <span class="seriesInfo">Internet-Draft, draft-ietf-ace-oscore-gm-admin-10</span>, <time datetime="2023-10-23" class="refDate">23 October 2023</time>, <span>&lt;<a href="https://datatracker.ietf.org/doc/html/draft-ietf-ace-oscore-gm-admin-10">https://datatracker.ietf.org/doc/html/draft-ietf-ace-oscore-gm-admin-10</a>&gt;</span>. </dd>
+<span class="refAuthor">Tiloca, M.</span>, <span class="refAuthor">Höglund, R.</span>, <span class="refAuthor">Van der Stok, P.</span>, and <span class="refAuthor">F. Palombini</span>, <span class="refTitle">"Admin Interface for the OSCORE Group Manager"</span>, <span class="refContent">Work in Progress</span>, <span class="seriesInfo">Internet-Draft, draft-ietf-ace-oscore-gm-admin-11</span>, <time datetime="2024-03-04" class="refDate">4 March 2024</time>, <span>&lt;<a href="https://datatracker.ietf.org/doc/html/draft-ietf-ace-oscore-gm-admin-11">https://datatracker.ietf.org/doc/html/draft-ietf-ace-oscore-gm-admin-11</a>&gt;</span>. </dd>
 <dd class="break"></dd>
 <dt id="I-D.ietf-anima-constrained-voucher">[I-D.ietf-anima-constrained-voucher]</dt>
         <dd>
-<span class="refAuthor">Richardson, M.</span>, <span class="refAuthor">Van der Stok, P.</span>, <span class="refAuthor">Kampanakis, P.</span>, and <span class="refAuthor">E. Dijk</span>, <span class="refTitle">"Constrained Bootstrapping Remote Secure Key Infrastructure (BRSKI)"</span>, <span class="refContent">Work in Progress</span>, <span class="seriesInfo">Internet-Draft, draft-ietf-anima-constrained-voucher-22</span>, <time datetime="2023-11-21" class="refDate">21 November 2023</time>, <span>&lt;<a href="https://datatracker.ietf.org/doc/html/draft-ietf-anima-constrained-voucher-22">https://datatracker.ietf.org/doc/html/draft-ietf-anima-constrained-voucher-22</a>&gt;</span>. </dd>
+<span class="refAuthor">Richardson, M.</span>, <span class="refAuthor">Van der Stok, P.</span>, <span class="refAuthor">Kampanakis, P.</span>, and <span class="refAuthor">E. Dijk</span>, <span class="refTitle">"Constrained Bootstrapping Remote Secure Key Infrastructure (cBRSKI)"</span>, <span class="refContent">Work in Progress</span>, <span class="seriesInfo">Internet-Draft, draft-ietf-anima-constrained-voucher-24</span>, <time datetime="2024-03-03" class="refDate">3 March 2024</time>, <span>&lt;<a href="https://datatracker.ietf.org/doc/html/draft-ietf-anima-constrained-voucher-24">https://datatracker.ietf.org/doc/html/draft-ietf-anima-constrained-voucher-24</a>&gt;</span>. </dd>
 <dd class="break"></dd>
 <dt id="I-D.ietf-core-coap-pubsub">[I-D.ietf-core-coap-pubsub]</dt>
         <dd>
-<span class="refAuthor">Jimenez, J.</span>, <span class="refAuthor">Koster, M.</span>, and <span class="refAuthor">A. Keränen</span>, <span class="refTitle">"A publish-subscribe architecture for the Constrained Application Protocol (CoAP)"</span>, <span class="refContent">Work in Progress</span>, <span class="seriesInfo">Internet-Draft, draft-ietf-core-coap-pubsub-13</span>, <time datetime="2023-10-20" class="refDate">20 October 2023</time>, <span>&lt;<a href="https://datatracker.ietf.org/doc/html/draft-ietf-core-coap-pubsub-13">https://datatracker.ietf.org/doc/html/draft-ietf-core-coap-pubsub-13</a>&gt;</span>. </dd>
+<span class="refAuthor">Jimenez, J.</span>, <span class="refAuthor">Koster, M.</span>, and <span class="refAuthor">A. Keränen</span>, <span class="refTitle">"A publish-subscribe architecture for the Constrained Application Protocol (CoAP)"</span>, <span class="refContent">Work in Progress</span>, <span class="seriesInfo">Internet-Draft, draft-ietf-core-coap-pubsub-14</span>, <time datetime="2024-04-18" class="refDate">18 April 2024</time>, <span>&lt;<a href="https://datatracker.ietf.org/doc/html/draft-ietf-core-coap-pubsub-14">https://datatracker.ietf.org/doc/html/draft-ietf-core-coap-pubsub-14</a>&gt;</span>. </dd>
+<dd class="break"></dd>
+<dt id="I-D.ietf-core-groupcomm-proxy">[I-D.ietf-core-groupcomm-proxy]</dt>
+        <dd>
+<span class="refAuthor">Tiloca, M.</span> and <span class="refAuthor">E. Dijk</span>, <span class="refTitle">"Proxy Operations for CoAP Group Communication"</span>, <span class="refContent">Work in Progress</span>, <span class="seriesInfo">Internet-Draft, draft-ietf-core-groupcomm-proxy-01</span>, <time datetime="2024-03-04" class="refDate">4 March 2024</time>, <span>&lt;<a href="https://datatracker.ietf.org/doc/html/draft-ietf-core-groupcomm-proxy-01">https://datatracker.ietf.org/doc/html/draft-ietf-core-groupcomm-proxy-01</a>&gt;</span>. </dd>
 <dd class="break"></dd>
 <dt id="I-D.ietf-core-transport-indication">[I-D.ietf-core-transport-indication]</dt>
         <dd>
-<span class="refAuthor">Amsüss, C.</span>, <span class="refTitle">"CoAP Protocol Indication"</span>, <span class="refContent">Work in Progress</span>, <span class="seriesInfo">Internet-Draft, draft-ietf-core-transport-indication-03</span>, <time datetime="2023-10-23" class="refDate">23 October 2023</time>, <span>&lt;<a href="https://datatracker.ietf.org/doc/html/draft-ietf-core-transport-indication-03">https://datatracker.ietf.org/doc/html/draft-ietf-core-transport-indication-03</a>&gt;</span>. </dd>
+<span class="refAuthor">Amsüss, C.</span> and <span class="refAuthor">M. S. Lenders</span>, <span class="refTitle">"CoAP Transport Indication"</span>, <span class="refContent">Work in Progress</span>, <span class="seriesInfo">Internet-Draft, draft-ietf-core-transport-indication-05</span>, <time datetime="2024-03-18" class="refDate">18 March 2024</time>, <span>&lt;<a href="https://datatracker.ietf.org/doc/html/draft-ietf-core-transport-indication-05">https://datatracker.ietf.org/doc/html/draft-ietf-core-transport-indication-05</a>&gt;</span>. </dd>
 <dd class="break"></dd>
 <dt id="I-D.irtf-t2trg-amplification-attacks">[I-D.irtf-t2trg-amplification-attacks]</dt>
         <dd>
-<span class="refAuthor">Mattsson, J. P.</span>, <span class="refAuthor">Selander, G.</span>, and <span class="refAuthor">C. Amsüss</span>, <span class="refTitle">"Amplification Attacks Using the Constrained Application Protocol (CoAP)"</span>, <span class="refContent">Work in Progress</span>, <span class="seriesInfo">Internet-Draft, draft-irtf-t2trg-amplification-attacks-02</span>, <time datetime="2023-04-12" class="refDate">12 April 2023</time>, <span>&lt;<a href="https://datatracker.ietf.org/doc/html/draft-irtf-t2trg-amplification-attacks-02">https://datatracker.ietf.org/doc/html/draft-irtf-t2trg-amplification-attacks-02</a>&gt;</span>. </dd>
-<dd class="break"></dd>
-<dt id="I-D.tiloca-core-groupcomm-proxy">[I-D.tiloca-core-groupcomm-proxy]</dt>
-        <dd>
-<span class="refAuthor">Tiloca, M.</span> and <span class="refAuthor">E. Dijk</span>, <span class="refTitle">"Proxy Operations for CoAP Group Communication"</span>, <span class="refContent">Work in Progress</span>, <span class="seriesInfo">Internet-Draft, draft-tiloca-core-groupcomm-proxy-09</span>, <time datetime="2023-08-31" class="refDate">31 August 2023</time>, <span>&lt;<a href="https://datatracker.ietf.org/doc/html/draft-tiloca-core-groupcomm-proxy-09">https://datatracker.ietf.org/doc/html/draft-tiloca-core-groupcomm-proxy-09</a>&gt;</span>. </dd>
+<span class="refAuthor">Mattsson, J. P.</span>, <span class="refAuthor">Selander, G.</span>, and <span class="refAuthor">C. Amsüss</span>, <span class="refTitle">"Amplification Attacks Using the Constrained Application Protocol (CoAP)"</span>, <span class="refContent">Work in Progress</span>, <span class="seriesInfo">Internet-Draft, draft-irtf-t2trg-amplification-attacks-03</span>, <time datetime="2024-02-21" class="refDate">21 February 2024</time>, <span>&lt;<a href="https://datatracker.ietf.org/doc/html/draft-irtf-t2trg-amplification-attacks-03">https://datatracker.ietf.org/doc/html/draft-irtf-t2trg-amplification-attacks-03</a>&gt;</span>. </dd>
 <dd class="break"></dd>
 <dt id="I-D.tiloca-core-oscore-discovery">[I-D.tiloca-core-oscore-discovery]</dt>
         <dd>
-<span class="refAuthor">Tiloca, M.</span>, <span class="refAuthor">Amsüss, C.</span>, and <span class="refAuthor">P. Van der Stok</span>, <span class="refTitle">"Discovery of OSCORE Groups with the CoRE Resource Directory"</span>, <span class="refContent">Work in Progress</span>, <span class="seriesInfo">Internet-Draft, draft-tiloca-core-oscore-discovery-14</span>, <time datetime="2023-09-08" class="refDate">8 September 2023</time>, <span>&lt;<a href="https://datatracker.ietf.org/doc/html/draft-tiloca-core-oscore-discovery-14">https://datatracker.ietf.org/doc/html/draft-tiloca-core-oscore-discovery-14</a>&gt;</span>. </dd>
+<span class="refAuthor">Tiloca, M.</span>, <span class="refAuthor">Amsüss, C.</span>, and <span class="refAuthor">P. Van der Stok</span>, <span class="refTitle">"Discovery of OSCORE Groups with the CoRE Resource Directory"</span>, <span class="refContent">Work in Progress</span>, <span class="seriesInfo">Internet-Draft, draft-tiloca-core-oscore-discovery-15</span>, <time datetime="2024-03-04" class="refDate">4 March 2024</time>, <span>&lt;<a href="https://datatracker.ietf.org/doc/html/draft-tiloca-core-oscore-discovery-15">https://datatracker.ietf.org/doc/html/draft-tiloca-core-oscore-discovery-15</a>&gt;</span>. </dd>
 <dd class="break"></dd>
 <dt id="libcoap">[libcoap]</dt>
         <dd>

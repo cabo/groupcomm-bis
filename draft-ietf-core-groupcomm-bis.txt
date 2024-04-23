@@ -7,8 +7,8 @@ Internet-Draft                                         IoTconsultancy.nl
 Obsoletes: 7390 (if approved)                                    C. Wang
 Updates: 7252, 7641 (if approved)                           InterDigital
 Intended status: Standards Track                               M. Tiloca
-Expires: 18 June 2024                                            RISE AB
-                                                        16 December 2023
+Expires: 25 October 2024                                         RISE AB
+                                                           23 April 2024
 
 
   Group Communication for the Constrained Application Protocol (CoAP)
@@ -55,11 +55,11 @@ Status of This Memo
    time.  It is inappropriate to use Internet-Drafts as reference
    material or to cite them other than as "work in progress."
 
-   This Internet-Draft will expire on 18 June 2024.
+   This Internet-Draft will expire on 25 October 2024.
 
 Copyright Notice
 
-   Copyright (c) 2023 IETF Trust and the persons identified as the
+   Copyright (c) 2024 IETF Trust and the persons identified as the
    document authors.  All rights reserved.
 
    This document is subject to BCP 78 and the IETF Trust's Legal
@@ -1251,7 +1251,7 @@ Table of Contents
    different origin servers that responded.  This in turn requires
    additional means to provide the client with information about the
    origin server of each response, e.g., using the forward-proxying
-   method defines in [I-D.tiloca-core-groupcomm-proxy].
+   method defines in [I-D.ietf-core-groupcomm-proxy].
 
    The following subsections define the freshness model and validation
    model to use for cached responses, which update the models defined in
@@ -1285,7 +1285,7 @@ Table of Contents
    monitoring group joining protocol exchanges.
 
    For caching at proxies, the freshness model defined in
-   [I-D.tiloca-core-groupcomm-proxy] can be used.
+   [I-D.ietf-core-groupcomm-proxy] can be used.
 
 3.2.2.  Validation Model
 
@@ -1297,7 +1297,7 @@ Table of Contents
    ETag Options as specified below.
 
    For validation at proxies, the validation model defined in
-   [I-D.tiloca-core-groupcomm-proxy] can be used.
+   [I-D.ietf-core-groupcomm-proxy] can be used.
 
 3.2.2.1.  ETag Option in a Group Request/Response
 
@@ -1439,7 +1439,7 @@ Table of Contents
       continue collecting responses
 
    A forward-proxying method using this approach and addressing the
-   issues raised above is defined in [I-D.tiloca-core-groupcomm-proxy].
+   issues raised above is defined in [I-D.ietf-core-groupcomm-proxy].
 
    An alternative solution is for the proxy to collect all the
    individual (unicast) responses to a CoAP group request and then send
@@ -1478,7 +1478,7 @@ Table of Contents
    information in the response payload.
 
    A forward-proxying method for HTTP-to-CoAP proxies addressing the
-   issues raised above is defined in [I-D.tiloca-core-groupcomm-proxy].
+   issues raised above is defined in [I-D.ietf-core-groupcomm-proxy].
 
 3.5.2.  Reverse-Proxies
 
@@ -1515,19 +1515,18 @@ Table of Contents
    *  The three issues and limitations defined in Section 3.5.1 for a
       forward proxy apply to a reverse-proxy as well, and have to be
       addressed, e.g., using the signaling method defined in
-      [I-D.tiloca-core-groupcomm-proxy] or other means.
+      [I-D.ietf-core-groupcomm-proxy] or other means.
 
    *  A reverse-proxy MAY have preconfigured time duration(s) that are
       used for collecting server responses and forwarding these back to
       the client.  These duration(s) may be set as global configuration
       or as resource-specific configurations.  If there is such
       preconfiguration, then an explicit signaling of the time period in
-      the client's request as defined in
-      [I-D.tiloca-core-groupcomm-proxy] is not necessarily needed.  Note
-      that a reverse-proxy is in an explicit relation with the origin
-      servers it stands in for.  Thus, compared to a forward-proxy, it
-      has a much better basis for determining and configuring such time
-      durations.
+      the client's request as defined in [I-D.ietf-core-groupcomm-proxy]
+      is not necessarily needed.  Note that a reverse-proxy is in an
+      explicit relation with the origin servers it stands in for.  Thus,
+      compared to a forward-proxy, it has a much better basis for
+      determining and configuring such time durations.
 
    *  A client that is configured to access a reverse-proxy resource
       (i.e., one that triggers a CoAP group communication request)
@@ -1555,7 +1554,7 @@ Table of Contents
       immediate Token re-use is not possible.
 
       If the reverse-proxy supports the signaling protocol of
-      [I-D.tiloca-core-groupcomm-proxy] it can include a Multicast-
+      [I-D.ietf-core-groupcomm-proxy] it can include a Multicast-
       Signaling Option in the error response to convey the reason for
       the error in a machine-readable way.
 
@@ -1588,7 +1587,7 @@ Table of Contents
          group request that each server has sent to that proxy.  Even in
          case the client is able to distinguish the different servers
          originating the responses (e.g., by using the approach defined
-         in [I-D.tiloca-core-groupcomm-proxy]), the client would receive
+         in [I-D.ietf-core-groupcomm-proxy]), the client would receive
          the same response content originated by each server N times, as
          relayed by the N proxies.
 
@@ -1779,7 +1778,7 @@ Table of Contents
 
    For observing at servers that are members of a CoAP group through a
    CoAP-to-CoAP proxy, the limitations stated in Section 3.5 apply.  The
-   method defined in [I-D.tiloca-core-groupcomm-proxy] enables group
+   method defined in [I-D.ietf-core-groupcomm-proxy] enables group
    communication including resource observation through proxies and
    addresses those limitations.
 
@@ -2253,7 +2252,7 @@ Table of Contents
    the client is outside this domain.
 
    For all the above cases, more details on using Group OSCORE are
-   defined in [I-D.tiloca-core-groupcomm-proxy].
+   defined in [I-D.ietf-core-groupcomm-proxy].
 
 6.  Security Considerations
 
@@ -2790,11 +2789,11 @@ Table of Contents
 
    [I-D.ietf-core-oscore-groupcomm]
               Tiloca, M., Selander, G., Palombini, F., Mattsson, J. P.,
-              and J. Park, "Group Object Security for Constrained
+              and R. Höglund, "Group Object Security for Constrained
               RESTful Environments (Group OSCORE)", Work in Progress,
-              Internet-Draft, draft-ietf-core-oscore-groupcomm-20, 2
-              September 2023, <https://datatracker.ietf.org/doc/html/
-              draft-ietf-core-oscore-groupcomm-20>.
+              Internet-Draft, draft-ietf-core-oscore-groupcomm-21, 4
+              March 2024, <https://datatracker.ietf.org/doc/html/draft-
+              ietf-core-oscore-groupcomm-21>.
 
    [RFC1122]  Braden, R., Ed., "Requirements for Internet Hosts -
               Communication Layers", STD 3, RFC 1122,
@@ -2893,16 +2892,16 @@ Table of Contents
    [I-D.bormann-core-responses]
               Bormann, C. and C. Amsüss, "CoAP: Non-traditional response
               forms", Work in Progress, Internet-Draft, draft-bormann-
-              core-responses-01, 3 February 2022,
+              core-responses-02, 3 March 2024,
               <https://datatracker.ietf.org/doc/html/draft-bormann-core-
-              responses-01>.
+              responses-02>.
 
    [I-D.ietf-6lo-multicast-registration]
               Thubert, P., "IPv6 Neighbor Discovery Multicast and
               Anycast Address Listener Subscription", Work in Progress,
-              Internet-Draft, draft-ietf-6lo-multicast-registration-16,
-              10 November 2023, <https://datatracker.ietf.org/doc/html/
-              draft-ietf-6lo-multicast-registration-16>.
+              Internet-Draft, draft-ietf-6lo-multicast-registration-18,
+              16 April 2024, <https://datatracker.ietf.org/doc/html/
+              draft-ietf-6lo-multicast-registration-18>.
 
    [I-D.ietf-ace-key-groupcomm-oscore]
               Tiloca, M., Park, J., and F. Palombini, "Key Management
@@ -2915,54 +2914,55 @@ Table of Contents
               Tiloca, M., Höglund, R., Van der Stok, P., and F.
               Palombini, "Admin Interface for the OSCORE Group Manager",
               Work in Progress, Internet-Draft, draft-ietf-ace-oscore-
-              gm-admin-10, 23 October 2023,
+              gm-admin-11, 4 March 2024,
               <https://datatracker.ietf.org/doc/html/draft-ietf-ace-
-              oscore-gm-admin-10>.
+              oscore-gm-admin-11>.
 
    [I-D.ietf-anima-constrained-voucher]
               Richardson, M., Van der Stok, P., Kampanakis, P., and E.
               Dijk, "Constrained Bootstrapping Remote Secure Key
-              Infrastructure (BRSKI)", Work in Progress, Internet-Draft,
-              draft-ietf-anima-constrained-voucher-22, 21 November 2023,
-              <https://datatracker.ietf.org/doc/html/draft-ietf-anima-
-              constrained-voucher-22>.
+              Infrastructure (cBRSKI)", Work in Progress, Internet-
+              Draft, draft-ietf-anima-constrained-voucher-24, 3 March
+              2024, <https://datatracker.ietf.org/doc/html/draft-ietf-
+              anima-constrained-voucher-24>.
 
    [I-D.ietf-core-coap-pubsub]
               Jimenez, J., Koster, M., and A. Keränen, "A publish-
               subscribe architecture for the Constrained Application
               Protocol (CoAP)", Work in Progress, Internet-Draft, draft-
-              ietf-core-coap-pubsub-13, 20 October 2023,
+              ietf-core-coap-pubsub-14, 18 April 2024,
               <https://datatracker.ietf.org/doc/html/draft-ietf-core-
-              coap-pubsub-13>.
+              coap-pubsub-14>.
+
+   [I-D.ietf-core-groupcomm-proxy]
+              Tiloca, M. and E. Dijk, "Proxy Operations for CoAP Group
+              Communication", Work in Progress, Internet-Draft, draft-
+              ietf-core-groupcomm-proxy-01, 4 March 2024,
+              <https://datatracker.ietf.org/doc/html/draft-ietf-core-
+              groupcomm-proxy-01>.
 
    [I-D.ietf-core-transport-indication]
-              Amsüss, C., "CoAP Protocol Indication", Work in Progress,
-              Internet-Draft, draft-ietf-core-transport-indication-03,
-              23 October 2023, <https://datatracker.ietf.org/doc/html/
-              draft-ietf-core-transport-indication-03>.
+              Amsüss, C. and M. S. Lenders, "CoAP Transport Indication",
+              Work in Progress, Internet-Draft, draft-ietf-core-
+              transport-indication-05, 18 March 2024,
+              <https://datatracker.ietf.org/doc/html/draft-ietf-core-
+              transport-indication-05>.
 
    [I-D.irtf-t2trg-amplification-attacks]
               Mattsson, J. P., Selander, G., and C. Amsüss,
               "Amplification Attacks Using the Constrained Application
               Protocol (CoAP)", Work in Progress, Internet-Draft, draft-
-              irtf-t2trg-amplification-attacks-02, 12 April 2023,
+              irtf-t2trg-amplification-attacks-03, 21 February 2024,
               <https://datatracker.ietf.org/doc/html/draft-irtf-t2trg-
-              amplification-attacks-02>.
-
-   [I-D.tiloca-core-groupcomm-proxy]
-              Tiloca, M. and E. Dijk, "Proxy Operations for CoAP Group
-              Communication", Work in Progress, Internet-Draft, draft-
-              tiloca-core-groupcomm-proxy-09, 31 August 2023,
-              <https://datatracker.ietf.org/doc/html/draft-tiloca-core-
-              groupcomm-proxy-09>.
+              amplification-attacks-03>.
 
    [I-D.tiloca-core-oscore-discovery]
               Tiloca, M., Amsüss, C., and P. Van der Stok, "Discovery of
               OSCORE Groups with the CoRE Resource Directory", Work in
               Progress, Internet-Draft, draft-tiloca-core-oscore-
-              discovery-14, 8 September 2023,
+              discovery-15, 4 March 2024,
               <https://datatracker.ietf.org/doc/html/draft-tiloca-core-
-              oscore-discovery-14>.
+              oscore-discovery-15>.
 
    [libcoap]  Bergmann, O., "libcoap", June 2022,
               <https://github.com/obgm/libcoap>.
