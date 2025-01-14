@@ -1210,8 +1210,8 @@ Table of Contents
    application.
 
    As part of a long exchange between the client and any of the servers
-   in the CoAP group, the responses considered above are an example of
-   the more general concept elaborated in Section 2 of
+   in the CoAP group, the responses considered above are examples of the
+   more general concept elaborated in Section 2 of
    [I-D.bormann-core-responses].
 
 3.2.  Caching
