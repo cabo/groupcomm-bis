@@ -2131,7 +2131,7 @@ Full examples are provided in <a href="#sec-examples-group-discovery-4" class="a
           <h4 id="name-token-reuse">
 <a href="#section-3.1.5" class="section-number selfRef">3.1.5. </a><a href="#name-token-reuse" class="section-name selfRef">Token Reuse</a>
           </h4>
-<p id="section-3.1.5-1">For CoAP group requests, there are additional constraints on the reuse of Token values at the client, compared to the unicast case defined in <span>[<a href="#RFC7252" class="cite xref">RFC7252</a>]</span> and updated by <span>[<a href="#RFC9175" class="cite xref">RFC9175</a>]</span>. Since for CoAP group requests the number of responses is not bound a priori, the client cannot use the reception of a response as a trigger to "free up" a Token value for reuse.<a href="#section-3.1.5-1" class="pilcrow">¶</a></p>
+<p id="section-3.1.5-1">For CoAP group requests, there are additional constraints on the reuse of Token values at the client, compared to the unicast case defined in <span>[<a href="#RFC7252" class="cite xref">RFC7252</a>]</span> and updated by <span>[<a href="#RFC9175" class="cite xref">RFC9175</a>]</span>. Since for CoAP group requests the number of responses is not bounded a priori, the client cannot use the reception of a response as a trigger to "free up" a Token value for reuse.<a href="#section-3.1.5-1" class="pilcrow">¶</a></p>
 <p id="section-3.1.5-2">Reusing a Token value too early could lead to incorrect response/request matching on the client, and would be a protocol error.  Therefore, the time between reuse of Token values for different group requests <span class="bcp14">MUST</span> be greater than:<a href="#section-3.1.5-2" class="pilcrow">¶</a></p>
 <div class="alignLeft art-text artwork" id="section-3.1.5-3">
 <pre>

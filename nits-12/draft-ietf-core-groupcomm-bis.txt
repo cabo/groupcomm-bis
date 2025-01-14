@@ -1138,7 +1138,7 @@ Table of Contents
    For CoAP group requests, there are additional constraints on the
    reuse of Token values at the client, compared to the unicast case
    defined in [RFC7252] and updated by [RFC9175].  Since for CoAP group
-   requests the number of responses is not bound a priori, the client
+   requests the number of responses is not bounded a priori, the client
    cannot use the reception of a response as a trigger to "free up" a
    Token value for reuse.
 
