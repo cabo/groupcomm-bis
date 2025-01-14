@@ -1245,7 +1245,7 @@ Table of Contents
    different origin servers that responded.  This in turn requires
    additional means to provide the client with information about the
    origin server of each response, e.g., using the forward-proxying
-   method defines in [I-D.ietf-core-groupcomm-proxy].
+   method defined in [I-D.ietf-core-groupcomm-proxy].
 
    The following subsections define the freshness model and validation
    model to use for cached responses, which update the models defined in
