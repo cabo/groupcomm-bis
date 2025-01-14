@@ -7,8 +7,8 @@ Internet-Draft                                         IoTconsultancy.nl
 Obsoletes: 7390 (if approved)                                    C. Wang
 Updates: 7252, 7641 (if approved)                           InterDigital
 Intended status: Standards Track                               M. Tiloca
-Expires: 17 July 2025                                            RISE AB
-                                                         13 January 2025
+Expires: 18 July 2025                                            RISE AB
+                                                         14 January 2025
 
 
   Group Communication for the Constrained Application Protocol (CoAP)
@@ -57,7 +57,7 @@ Status of This Memo
    time.  It is inappropriate to use Internet-Drafts as reference
    material or to cite them other than as "work in progress."
 
-   This Internet-Draft will expire on 17 July 2025.
+   This Internet-Draft will expire on 18 July 2025.
 
 Copyright Notice
 
@@ -120,7 +120,7 @@ Table of Contents
        3.10.1.  MLD/MLDv2/IGMP/IGMPv3
        3.10.2.  RPL
        3.10.3.  MPL
-   4.  Unsecured Group Communication
+   4.  Unsecured Group Communication (NoSec Mode)
    5.  Secured Group Communication using Group OSCORE
      5.1.  Group OSCORE
      5.2.  Secure Group Maintenance
@@ -678,10 +678,10 @@ Table of Contents
 
    Due to the CoAP client's encoding of the request URI into CoAP
    options (per Section 6.4 of [RFC7252]) and the possibility of the
-   CoAP server to compose the URI again based on received options (see
-   Section 6.5 of [RFC7252]), the application group name information can
-   be transported to the server and used to select the intended
-   application group.
+   CoAP server to compose the URI again based on the options received
+   (see Section 6.5 of [RFC7252]), the application group name
+   information can be transported to the server and used to select the
+   intended application group.
 
    Any other method to transport the application group name within a
    CoAP request, but not using the group URI, would require a new CoAP
@@ -713,8 +713,8 @@ Table of Contents
    A security group can be named in many ways through different types of
    identifiers, such as name string, (integer) number, URI, or other
    types of strings.  Such a group name is generally not related to
-   other kinds of group identifiers that may be specific of the used
-   security solution.
+   other kinds of group identifiers that may be specific of the security
+   solution used.
 
    The name of a security group is not expected to be used in messages
    exchanged among its members, unless the application requires
@@ -1589,7 +1589,7 @@ Table of Contents
    alternative transports (other than IP multicast), if not defined
    otherwise.
 
-   Independently of the used transport, additional guidelines to reduce
+   Independently of the transport used, additional guidelines to reduce
    congestion risks defined in this document are as follows:
 
    *  A server in a constrained network SHOULD only support group
@@ -1754,8 +1754,8 @@ Table of Contents
    1.  The client uses unicast requests, separately addressing each
        different server.
 
-   2.  The client uses follow-up group requests, if all the received
-       responses from different servers specify the same block size SIZE
+   2.  The client uses follow-up group requests, if all the responses
+       received from different servers specify the same block size SIZE
        in their Block2 Option.  In particular, SIZE can have the same
        value specified in the Block2 Option of the first group request,
        or instead a different one.  If the client relies on this
@@ -2006,7 +2006,7 @@ Table of Contents
    may be defined at an ingress MPL Forwarder.  See Section 6.6 for more
    details.
 
-4.  Unsecured Group Communication
+4.  Unsecured Group Communication (NoSec Mode)
 
    CoAP group communication can operate in CoAP NoSec (No Security)
    mode, without using application-layer and transport-layer security
